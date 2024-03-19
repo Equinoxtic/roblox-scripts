@@ -1,10 +1,12 @@
 --[[
 
     * Name:           PostProcessLoader
-    * Version:        1.0.0
+    * Version:        1.0.1
     * Description:    A simple and lightweight post-processing effects loader.
     * Author:         @Aeronoxtic
     * Date:           03/19/2024
+    
+    Documentation: https://github.com/Equinoxtic/roblox-scripts/wiki/Client#postprocessingloader
 
 ]]
 
@@ -43,6 +45,8 @@ local POST_PROCESSING_EFFECTS = {
 
 local POST_PROCESSING_SETTINGS = {
     
+    -- Bloom Properties.
+    
     ["BloomEffect"] = {
         ["Intensity"] = 0.95,
         ["Size"] = 24,
@@ -50,10 +54,16 @@ local POST_PROCESSING_SETTINGS = {
         ["Enabled"] = true
     },
     
+    
+    -- Blur Properties.
+    
     ["BlurEffect"] = {
         ["Size"] = 2,
         ["Enabled"] = true
     },
+    
+    
+    -- Color Correction Properties.
     
     ["ColorCorrectionEffect"] = {
         ["Brightness"] = 0,
@@ -63,6 +73,9 @@ local POST_PROCESSING_SETTINGS = {
         ["Enabled"] = true
     },
     
+    
+    -- Depth Of Field (DOF) Properties.
+    
     ["DepthOfFieldEffect"] = {
         ["FarIntensity"] = 0.75,
         ["FocusDistance"] = 0.05,
@@ -70,6 +83,9 @@ local POST_PROCESSING_SETTINGS = {
         ["NearIntensity"] = 0.75,
         ["Enabled"] = true
     },
+    
+    
+    -- SunRays Properties.
     
     ["SunRaysEffect"] = {
         ["Intensity"] = 0.25,
@@ -80,7 +96,14 @@ local POST_PROCESSING_SETTINGS = {
 }
 
 
-local loadPostProcessingEffects = function()
+--[[
+
+    * Loads all of the present Post-Processing Effects in the ``POST_PROCESSING_EFFECTS`` table.
+    * Also loads the settings and configurations for the Post-Processing Effects.
+
+]]
+
+loadPostProcessingEffects = function()
     
     -- Create new Instance for each Post-Processing Effect.
     
@@ -90,17 +113,26 @@ local loadPostProcessingEffects = function()
         currentInstance.Parent = Services.Lighting
     end
     
+    loadPostProcessingSettings()
+    
 end
 
 
-local setPostProcessingProperty = function(EFFECT, PROPERTIES)
+setPostProcessingProperty = function(EFFECT, PROPERTIES)
     for PROPERTY, VALUE in PROPERTIES do
         Services.Lighting:FindFirstChildWhichIsA(EFFECT)[PROPERTY] = VALUE
     end 
 end
 
 
-local loadPostProcessingSettings = function()
+--[[
+
+    * Loads the settings and the configurations for the Post-Processing Effects.
+    * Can be useful when reloading the effects.
+
+]]
+
+loadPostProcessingSettings = function()
     
     -- Load Post-Processing Settings.
     
@@ -111,9 +143,6 @@ local loadPostProcessingSettings = function()
     setPostProcessingProperty("SunRaysEffect", POST_PROCESSING_SETTINGS.SunRaysEffect)
     
 end
-
-
-loadPostProcessingEffects()
 
 
 loadPostProcessingSettings()
