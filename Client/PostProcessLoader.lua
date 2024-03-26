@@ -115,7 +115,6 @@ POST_PROCESSING_SETTINGS = {
 --[[
 
     * Loads all of the present Post-Processing Effects in the ``POST_PROCESSING_EFFECTS`` table.
-    * Also loads the settings and configurations for the Post-Processing Effects.
 
 ]]
 
@@ -137,7 +136,6 @@ end
 --[[
 
     * Loads the settings and the configurations for the Post-Processing Effects.
-    * Can be useful when reloading the effects.
 
 ]]
 
