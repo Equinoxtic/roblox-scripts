@@ -1,7 +1,7 @@
 --[[
 
     * Name:           PostProcessLoader
-    * Version:        1.0.3
+    * Version:        1.0.31
     * Description:    A simple and lightweight post-processing effects loader.
     * Author:         @Aeronoxtic
     * Date:           03/19/2024
@@ -35,6 +35,9 @@ local module = {}
 Services = {
     ["Lighting"] = game:GetService("Lighting")
 }
+
+
+local ScriptUtilities = require(game:GetService("ReplicatedStorage").Utility:FindFirstChild("ScriptUtilities"))
 
 
 POST_PROCESSING_EFFECTS = {
@@ -125,6 +128,8 @@ module.loadPostProcessingEffects = function()
             Instance.new(POST_PROCESSING_EFFECTS[i])
         currentInstance.Parent = Services.Lighting
     end
+    
+    print("Loaded Post-Processing Effects !")
 
 end
 
@@ -140,19 +145,14 @@ module.loadPostProcessingSettings = function()
 
     -- Load Post-Processing Settings.
 
-    setPostProcessingProperty("BloomEffect", POST_PROCESSING_SETTINGS.BloomEffect)
-    setPostProcessingProperty("BlurEffect", POST_PROCESSING_SETTINGS.BlurEffect)
-    setPostProcessingProperty("ColorCorrectionEffect", POST_PROCESSING_SETTINGS.ColorCorrectionEffect)
-    setPostProcessingProperty("DepthOfFieldEffect", POST_PROCESSING_SETTINGS.DepthOfFieldEffect)
-    setPostProcessingProperty("SunRaysEffect", POST_PROCESSING_SETTINGS.SunRaysEffect)
+    ScriptUtilities.setPropertyOf(Services.Lighting, "BloomEffect", POST_PROCESSING_SETTINGS.BloomEffect)
+    ScriptUtilities.setPropertyOf(Services.Lighting, "BlurEffect", POST_PROCESSING_SETTINGS.BlurEffect)
+    ScriptUtilities.setPropertyOf(Services.Lighting, "ColorCorrectionEffect", POST_PROCESSING_SETTINGS.ColorCorrectionEffect)
+    ScriptUtilities.setPropertyOf(Services.Lighting, "DepthOfFieldEffect", POST_PROCESSING_SETTINGS.DepthOfFieldEffect)
+    ScriptUtilities.setPropertyOf(Services.Lighting, "SunRaysEffect", POST_PROCESSING_SETTINGS.SunRaysEffect)
+    
+    print("Loaded Settings for Post-Processing Effects !")
 
-end
-
-
-setPostProcessingProperty = function(EFFECT, PROPERTIES)
-    for PROPERTY, VALUE in PROPERTIES do
-        Services.Lighting:FindFirstChildWhichIsA(EFFECT)[PROPERTY] = VALUE
-    end 
 end
 
 
