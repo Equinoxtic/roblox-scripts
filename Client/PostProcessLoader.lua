@@ -1,7 +1,7 @@
 --[[
 
     * Name:           PostProcessLoader
-    * Version:        1.0.2
+    * Version:        1.0.3
     * Description:    A simple and lightweight post-processing effects loader.
     * Author:         @Aeronoxtic
     * Date:           03/19/2024
@@ -50,50 +50,60 @@ POST_PROCESSING_SETTINGS = {
 
     -- Bloom Properties.
 
-    ["BloomEffect"] = {
-        ["Intensity"] = 0.95,
-        ["Size"] = 24,
-        ["Threshold"] = 0.815,
-        ["Enabled"] = true
+    ["BloomEffect"] = { -- BloomEffect Documentation: https://create.roblox.com/docs/reference/engine/classes/BloomEffect
+        
+        ["Intensity"] = 0.95, -- Determines the additive blending intensity.
+        ["Size"] = 24, -- Determines the radius of the bloom in pixels.
+        ["Threshold"] = 0.815, -- Determines how bright a color must be before it blooms.
+        ["Enabled"] = true -- Toggles whether or not the PostEffect is enabled.
+        
     },
 
 
     -- Blur Properties.
 
-    ["BlurEffect"] = {
-        ["Size"] = 2,
-        ["Enabled"] = true
+    ["BlurEffect"] = { -- BlurEffect Documentation: https://create.roblox.com/docs/reference/engine/classes/BlurEffect
+        
+        ["Size"] = 2, -- Determines the blur radius.
+        ["Enabled"] = true -- Toggles whether or not the PostEffect is enabled.
+        
     },
 
 
     -- Color Correction Properties.
 
-    ["ColorCorrectionEffect"] = {
-        ["Brightness"] = 0,
-        ["Contrast"] = 0.05,
-        ["Saturation"] = -0.025,
-        ["TintColor"] = Color3.fromRGB(255, 255, 255),
-        ["Enabled"] = true
+    ["ColorCorrectionEffect"] = { -- ColorCorrectionEffect Documentation: https://create.roblox.com/docs/reference/engine/classes/ColorCorrectionEffect
+        
+        ["Brightness"] = 0, -- Determines by how much the brightness of pixel colors will be shifted.
+        ["Contrast"] = 0.05, -- Determines the change in separation between the dark and light colors.
+        ["Saturation"] = -0.025, -- Determines the change in intensity of colors.
+        ["TintColor"] = Color3.fromRGB(255, 255, 255), -- Determines by how much the RGB channels of pixels are scaled.
+        ["Enabled"] = true -- Toggles whether or not the PostEffect is enabled.
+        
     },
 
 
     -- Depth Of Field (DOF) Properties.
 
-    ["DepthOfFieldEffect"] = {
-        ["FarIntensity"] = 0.75,
-        ["FocusDistance"] = 0.05,
-        ["InFocusRadius"] = 10,
-        ["NearIntensity"] = 0.75,
-        ["Enabled"] = true
+    ["DepthOfFieldEffect"] = { -- DepthOfFieldEffect Documentation: https://create.roblox.com/docs/reference/engine/classes/DepthOfFieldEffect
+        
+        ["FarIntensity"] = 0.75, -- Intensity of the far field blur.
+        ["FocusDistance"] = 0.05, -- Distance away from the camera where objects are in focus.
+        ["InFocusRadius"] = 10, -- Controls the distance away from the FocusDistance where no blur is applied.
+        ["NearIntensity"] = 0.75, -- Intensity of the near field blur.
+        ["Enabled"] = true -- Toggles whether or not the PostEffect is enabled.
+        
     },
 
 
     -- SunRays Properties.
 
-    ["SunRaysEffect"] = {
-        ["Intensity"] = 0.25,
-        ["Spread"] = 1,
-        ["Enabled"] = true
+    ["SunRaysEffect"] = { -- SunRaysEffect Documentation: https://create.roblox.com/docs/reference/engine/classes/SunRaysEffect
+        
+        ["Intensity"] = 0.25, -- Determines the opacity of the sun rays.
+        ["Spread"] = 1, -- Determines how wide the sun rays will spread out.
+        ["Enabled"] = true -- Toggles whether or not the PostEffect is enabled.
+        
     }
 
 }
